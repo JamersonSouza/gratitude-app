@@ -1,6 +1,5 @@
 import { ButtonModule } from 'primeng/button';
-import { Component, OnInit } from '@angular/core';
-import { PrimeNG } from 'primeng/config';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-login',
