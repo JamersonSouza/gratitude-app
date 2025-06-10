@@ -6,15 +6,10 @@ import { PrimeNG } from 'primeng/config';
     selector: 'app-login',
     imports: [ButtonModule],
     templateUrl: './login.component.html',
-    styleUrl: './login.component.css'
+    styleUrl: './login.component.css',
+    standalone: true
 })
-export class LoginComponent implements OnInit {
-
-   constructor(private primeng: PrimeNG) {}
-
-    ngOnInit() {
-        this.primeng.ripple.set(true);
-    }
+export class LoginComponent {
 
 
 }
