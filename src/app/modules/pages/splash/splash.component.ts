@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-splash',
-  imports: [],
+  imports: [ButtonModule],
   templateUrl: './splash.component.html',
   styleUrl: './splash.component.css'
 })
