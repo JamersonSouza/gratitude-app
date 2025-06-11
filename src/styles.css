@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+html, body{
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+a{text-decoration: none;}
+@font-face{
+    src: url("assets/fonts/Fontuna-Stencil.otf");
+    font-family: "Fortuna";
+}
