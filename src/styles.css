@@ -10,3 +10,14 @@ a{text-decoration: none;}
     src: url("assets/fonts/Fontuna-Stencil.otf");
     font-family: "Fortuna";
 }
+
+@font-face{
+    src: url("assets/fonts/LSpartan/LeagueSpartan-Regular.ttf");
+    font-family: "LSpartan-Regular";
+}
+
+@font-face{
+    src: url("assets/fonts/LSpartan/LeagueSpartan-Bold.ttf");
+    font-family: "LSpartan-Bold";
+}
+
