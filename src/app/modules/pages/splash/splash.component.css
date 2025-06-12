@@ -1,7 +1,7 @@
 .background-container{
   background-image: url('../../../../assets/images/gratitude-background.jpg');
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: top;
 }
 
 .splash-container{
@@ -32,10 +32,35 @@
   margin-bottom: 10px;
   text-align: center;
 }
-p-button p-button-primary::ng-deep{
-  background: #BCE0FB !important;
-}
+
 .splash-buttons{
   padding-bottom: 100px;
+}
+
+:host ::ng-deep .p-button.p-button-rounded {
+  width: 250px !important;
+  color: #648398;
+  font-family: 'LSpartan-Regular', sans-serif;
+}
+
+:host ::ng-deep .p-button.p-button-rounded:hover {
+  color: #FFF;
+}
+:host
+  ::ng-deep {
+    --p-button-primary-background: #BCE0FB;
+    --p-button-primary-border-color: none;
+    --p-button-primary-hover-background: #648398;
+    --p-button-primary-hover-border-color: none;
+
+    .p-button {
+      background-color: var(--p-button-primary-background);
+      border: var(--p-button-primary-border-color);
+
+       &:hover {
+        background-color: var(--p-button-primary-hover-background);
+        border-color: var(--p-button-primary-hover-border-color);
+      }
+    }
 
 }
