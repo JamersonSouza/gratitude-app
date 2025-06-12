@@ -52,6 +52,8 @@
     --p-button-primary-border-color: none;
     --p-button-primary-hover-background: #648398;
     --p-button-primary-hover-border-color: none;
+    --p-button-primary-active-background: #648398;
+    --p-button-primary-active-border-color: none;
 
     .p-button {
       background-color: var(--p-button-primary-background);
