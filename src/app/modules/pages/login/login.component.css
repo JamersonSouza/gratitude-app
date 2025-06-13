@@ -1,0 +1,81 @@
+.background-container{
+  background-image: url('../../../../assets/images/gratitude-background.jpg');
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-form-right{
+    height: 100%;
+    width: 50%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.login-text-left{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+.login-text-left span{
+  font-family: 'Fortuna', sans-serif;
+  color: #FFF;
+  text-align: center;
+  font-size: 128px;
+}
+
+.login-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+:host ::ng-deep .p-button.p-button-rounded{
+  width: 250px;
+  font-family:  'LSpartan-Regular', sans-serif;
+  color: #648398;
+}
+.login-new-account{
+  font-family:  'LSpartan-Regular', sans-serif;
+  color: #FFF;
+  text-decoration: underline;
+}
+:host ::ng-deep .p-button.p-button-rounded:hover {
+  color: #FFF;
+}
+:host
+  ::ng-deep {
+    --p-button-primary-background: #BCE0FB;
+    --p-button-primary-border-color: none;
+    --p-button-primary-hover-background: #648398;
+    --p-button-primary-hover-border-color: none;
+    --p-button-primary-active-background: #648398;
+    --p-button-primary-active-border-color: none;
+
+    .p-button {
+      background-color: var(--p-button-primary-background);
+      border: var(--p-button-primary-border-color);
+
+       &:hover {
+        background-color: var(--p-button-primary-hover-background);
+        border-color: var(--p-button-primary-hover-border-color);
+      }
+    }
+
+}
