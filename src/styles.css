@@ -50,3 +50,37 @@ a{text-decoration: none;}
   border-bottom-color: #ffffff;
 }
 
+.glass-button {
+    padding: 0.75rem 2rem;
+    width: 250px;
+    border: none;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(15px);
+    color: #FFF;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'LSpartan-Regular', sans-serif;
+}
+
+.glass-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #BCE0FB;
+}
+
+
+
+.solid-glass-button{
+  width: 250px !important;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #BCE0FB;
+  color: #648398;
+  border: none;
+  border-radius: 50px;
+  font-family: 'LSpartan-Regular', sans-serif;
+}
+
