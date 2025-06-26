@@ -1,0 +1,153 @@
+.background-container{
+  background-image: url('../../../../assets/images/gratitude-background.jpg');
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.register-text-left{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+.register-text-left span  {
+  font-family: 'Fortuna', sans-serif;
+  color: #FFF;
+  text-align: center;
+  font-size: 128px;
+}
+
+
+
+
+:host
+  ::ng-deep {
+    --p-button-primary-background: none;
+    --p-button-primary-border-color: none;
+    --p-button-primary-hover-background: none;
+    --p-button-primary-hover-border-color: none;
+    --p-button-primary-active-background: none;
+    --p-button-primary-active-border-color: none;
+}
+
+
+.register-form-step{
+    height: 100%;
+    width: 50%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    align-items: center;
+}
+
+
+.step-indicators {
+    display: flex;
+    gap: 1rem;
+}
+
+.register-form {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.navigation-buttons{
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation-buttons > button {
+  margin: 15px 0;
+}
+
+.step-indicators {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 200px;
+  position: relative;
+}
+
+.step-indicators::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 40px);
+  height: 2px;
+  background-color: #ffffff;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.step-indicators button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.step-indicators button.active-step {
+  color: #648398 !important;
+  background: none;
+  font-size: 1.2rem;
+}
+
+button{
+  background: none;
+  font-size: 1.2rem;
+  color: #fff;
+}
+.register-text-right{
+  width: 300px;
+}
+.register-text-right span{
+  font-family: 'LSpartan-Light', sans-serif;
+  color: #FFF;
+  text-align: center;
+  font-size: 20px;
+}
+
+.category-list {
+ display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  justify-content: center;
+}
+
+.category-button {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 40px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-family: 'LSpartan-Light', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+   min-width: 200px;
+  text-align: center;
+}
+
+.category-button.active {
+  color: #648398;
+  background: rgba(255, 255, 255, 0.4);
+}

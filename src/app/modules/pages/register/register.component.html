@@ -1,0 +1,75 @@
+<body class="background-container">
+  <div class="login-container">
+    <section class="register-text-left">
+      <span>Visualize</span>
+      <span>seus sonhos</span>
+      <span>expresse</span>
+      <span>sua gratidão</span>
+    </section>
+
+    <section class="register-form-step">
+      <img
+        src="../../../../assets/images/logo.png"
+        width="300px"
+        alt="logo gratitude"
+      />
+
+      <div class="step-indicators">
+        <button
+          (click)="setActiveStep(0)"
+          [ngClass]="{ 'active-step': active === 0 }"
+        >
+          <span>●</span>
+        </button>
+
+        <button
+          (click)="setActiveStep(1)"
+          [ngClass]="{ 'active-step': active === 1 }"
+        >
+          <span>●</span>
+        </button>
+      </div>
+
+      <section class="register-form">
+        @if (active === 0) {
+        <div>
+          <input type="text" class="form-control" placeholder="Nome" />
+          <input type="email" class="form-control" placeholder="E-mail" />
+          <input type="password" class="form-control" placeholder="Password" />
+        </div>
+        } @else if (active === 1) {
+        <div class="register-text-right">
+          <span>Quais temas você quer ver no seu quadro dos sonhos?</span>
+          <div class="category-list">
+            <button
+              *ngFor="let category of categories"
+              class="category-button"
+              [class.active]="isSelected(category)"
+              (click)="toggleCategory(category)"
+            >
+              {{ category }}
+            </button>
+          </div>
+        </div>
+        }
+      </section>
+
+      <section class="navigation-buttons">
+        @if(active != 0){
+        <button class="solid-glass-button" [disabled]="active === 0">
+          Criar conta
+        </button>
+        <button
+          class="glass-button"
+          (click)="previous()"
+          [disabled]="active === 0"
+        >
+          Voltar
+        </button>
+        } @else{
+        <button class="glass-button" (click)="next()">Próximo</button>
+        }
+      </section>
+    </section>
+  </div>
+</body>
