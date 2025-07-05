@@ -22,15 +22,15 @@
   width: 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
   height: 100%;
 }
 .login-text-left span{
   font-family: 'Fortuna', sans-serif;
   color: #FFF;
-  text-align: center;
   font-size: 128px;
+  margin-left: 350px;
 }
 
 .login-content {
