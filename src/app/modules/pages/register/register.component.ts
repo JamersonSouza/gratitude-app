@@ -6,12 +6,16 @@ import { NgFor } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RegisterService } from '../../services/register/register.service';
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { RouterModule, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-register',
-  imports: [StepsModule, PasswordModule, NgClass, NgFor, ReactiveFormsModule],
+  imports: [StepsModule, PasswordModule, NgClass, NgFor, ReactiveFormsModule, ToastModule, RouterModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
+  standalone: true
 })
 export class RegisterComponent {
   active: number = 0;
@@ -21,11 +25,13 @@ export class RegisterComponent {
   currentPage = 0;
   selectedCategories: string[] = [];
   registerForm: FormGroup;
+  shouldRedirect = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
-    private msg: MessageService
+    private msg: MessageService,
+    private router: Router
   ) {
     this.registerForm = this.formBuilder.group({
       name: [''],
@@ -36,9 +42,9 @@ export class RegisterComponent {
 
   register(): void {
     this.registerForm = this.registerForm.value;
-    console.log(this.registerForm);
     this.registerService.register(this.registerForm).subscribe({
       next: (res) => {
+        this.shouldRedirect = true;
         this.msg.add({
           severity: 'success',
           summary: 'Sucesso',
@@ -49,10 +55,16 @@ export class RegisterComponent {
         this.msg.add({
           severity: 'error',
           summary: 'Erro',
-          detail: 'Ocorreu um erro ao cadastro o usuário.',
+          detail: err.error.detail,
         });
       },
     });
+  }
+
+  onToastClose() {
+    if (this.shouldRedirect) {
+      this.router.navigate(['/login']);
+    }
   }
 
   setActiveStep(i: number) {
