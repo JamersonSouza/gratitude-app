@@ -1,24 +1,52 @@
 import { ButtonModule } from 'primeng/button';
 import { Component } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from '../../services/login/login.service';
+import { RouterModule, Router } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { AuthenticationService } from '../../services/auth/authentication.service';
 
 @Component({
     selector: 'app-login',
-    imports: [ButtonModule, InputTextModule],
+    imports: [ButtonModule, InputTextModule, ToastModule, RouterModule, ReactiveFormsModule],
     templateUrl: './login.component.html',
     styleUrl: './login.component.css',
     standalone: true
 })
 export class LoginComponent {
 
-  constructor(private formBuilder : FormBuilder, private loginService : LoginService){
-    //to do
+  loginForm: FormGroup;
+
+  constructor(private formBuilder : FormBuilder, private loginService : LoginService,
+    private router : Router, private message : MessageService, private authenticationService : AuthenticationService
+  ){
+    this.loginForm = this.formBuilder.group({
+      email: [''],
+      password: ['']
+    });
   }
 
   login(): void{
-    //to do
+     let login = this.loginForm.value;
+      this.loginService.login(login).subscribe({
+          next: (res) => {
+            this.authenticationService.storeToken(res.token);
+            this.router.navigate(['/dashboard'], {
+               state: {
+                  toast: {
+                    severity: 'success',
+                    summary: 'Autenticação',
+                    detail: 'Login realizado com sucesso!'
+                  }
+                }
+            });
+          },
+          error: (err) => {
+            this.message.add({ severity: 'error', summary: 'Erro', detail: err.error.detail });
+          }
+        });
   }
 
 }

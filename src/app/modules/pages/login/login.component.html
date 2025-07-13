@@ -1,3 +1,4 @@
+<p-toast/>
 <body class="background-container">
 <div class="login-container">
 
@@ -11,12 +12,14 @@
       <section class="login-form-right">
         <div class="login-content">
           <img src="../../../../assets/images/logo.png" alt="logo gratitude">
-           <div class="login-form">
-             <input type="email"  class="form-control" placeholder="E-mail">
-             <input type="password" class="form-control" placeholder="Password">
+          <form [formGroup]="loginForm">
+          <div class="login-form">
+             <input type="email" formControlName="email" class="form-control" placeholder="E-mail">
+             <input type="password" formControlName="password" class="form-control" placeholder="Password">
              <p-button label="Entrar" (click)="login()" [rounded]="true" />
              <a href="/register"><p class="login-new-account">Não possui conta? Cadastre-se</p></a>
-           </div>
+            </div>
+          </form>
         </div>
 
       </section>
