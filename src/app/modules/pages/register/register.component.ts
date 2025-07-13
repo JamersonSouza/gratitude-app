@@ -8,7 +8,8 @@ import { RegisterService } from '../../services/register/register.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { RouterModule, Router } from '@angular/router';
-
+import { LoginService } from '../../services/login/login.service';
+import { AuthenticationService } from './../../services/auth/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -30,8 +31,10 @@ export class RegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
-    private msg: MessageService,
-    private router: Router
+    private message: MessageService,
+    private router: Router,
+    private loginService : LoginService,
+    private authenticationService : AuthenticationService
   ) {
     this.registerForm = this.formBuilder.group({
       name: [''],
@@ -41,18 +44,32 @@ export class RegisterComponent {
   }
 
   register(): void {
-    this.registerForm = this.registerForm.value;
-    this.registerService.register(this.registerForm).subscribe({
-      next: (res) => {
-        this.shouldRedirect = true;
-        this.msg.add({
-          severity: 'success',
-          summary: 'Sucesso',
-          detail: 'Usuário cadastrado com sucesso!',
+    let user = this.registerForm.value;
+    this.registerService.register(user).subscribe({
+      next: () => {
+        this.loginService.login({
+          email: user.email,
+          password: user.password,
+        }).subscribe({
+          next: (res) => {
+            this.authenticationService.storeToken(res.accessToken);
+            this.router.navigate(['/dashboard'], {
+                state: {
+                  toast: {
+                    severity: 'success',
+                    summary: 'Autenticação',
+                    detail: 'Login realizado com sucesso!'
+                  }
+                }
+            });
+          },
+          error: (err) => {
+            this.message.add({ severity: 'error', summary: 'Erro no login', detail: 'Falha no login automático.' });
+          }
         });
       },
       error: (err) => {
-        this.msg.add({
+        this.message.add({
           severity: 'error',
           summary: 'Erro',
           detail: err.error.detail,
