@@ -94,6 +94,10 @@ a{text-decoration: none;}
   .splash-text-left{display: none;}
   .splash-line-center{display: none;}
   .background-container{width: 100%;}
+  .login-text-left{display: none !important; height: 0 !important; width: 0 !important;}
+  .login-form-right img {width: 150px;}
+  .login-form-right{width: 100% !important; display: flex !important; justify-content: center !important;}
+
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
